@@ -6,5 +6,13 @@
     <fragment
         android:id="@+id/gameListFragment"
         android:name="com.servicenow.exercise_kotlin.gameslist.GameListFragment"
-        android:label="GameListFragment" />
+        android:label="GameListFragment" >
+        <action
+            android:id="@+id/action_gameListFragment_to_gameDetailFragment"
+            app:destination="@id/gameDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/gameDetailFragment"
+        android:name="com.servicenow.exercise_kotlin.gameslist.GameDetailFragment"
+        android:label="GameDetailFragment" />
 </navigation>

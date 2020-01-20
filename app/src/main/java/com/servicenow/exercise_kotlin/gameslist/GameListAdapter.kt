@@ -29,12 +29,12 @@ class GameListAdapter(val items : List<Game>, private val clickCallback: ClickCa
             itemView.image.setImageResource(Game.getIconResource(gameObj.cover))
             itemView.text1.text = gameObj.name
             itemView.text2.text = gameObj.shortDescription
+            itemView.setOnClickListener{clickCallback.onGameItemClicked(gameObj)}
         }
-
     }
 
     interface ClickCallback {
-
+        fun onGameItemClicked(gameObject: Game)
     }
 
 }

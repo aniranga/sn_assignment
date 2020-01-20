@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.servicenow.exercise.R
+import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_DESC_KEY
+import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_TITLE_KEY
 import com.servicenow.resources.Game
 import kotlinx.android.synthetic.main.fragment_game_list.view.*
 
@@ -57,6 +59,13 @@ class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback 
 
     override fun showError() {
 
+    }
+
+    override fun onGameItemClicked(gameObj: Game) {
+        var gameInfoBundle = Bundle()
+        gameInfoBundle.putString(GAME_TITLE_KEY, gameObj.name)
+        gameInfoBundle.putString(GAME_DESC_KEY, gameObj.longDescription)
+        navController?.navigate(R.id.action_gameListFragment_to_gameDetailFragment, gameInfoBundle)
     }
 
     inner class SpacesItemDecoration(private val mSpace: Int) : RecyclerView.ItemDecoration() {
