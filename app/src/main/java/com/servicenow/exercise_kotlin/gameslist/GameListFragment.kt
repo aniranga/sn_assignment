@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import com.servicenow.exercise.R
+import com.servicenow.exercise_kotlin.data.provider.DataAccessorProvider
 import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_DESC_KEY
 import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_TITLE_KEY
 import com.servicenow.resources.Game
@@ -38,8 +39,15 @@ class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback 
         val spacing = getResources().getDimensionPixelSize(R.dimen.recycler_item_spacing)
         val spaceDecoration = SpacesItemDecoration(spacing)
         recyclerView?.addItemDecoration(spaceDecoration)
-        presenter = GameListPresenterImpl(this)
+        presenter = GameListPresenterImpl(this, activity?.application as DataAccessorProvider)
         presenter?.fetchItems()
+    }
+
+    override fun onDestroy() {
+        if (presenter != null) {
+            presenter?.destroy()
+        }
+        super.onDestroy()
     }
 
     override fun onFetchedAllItems(resultList: List<Game>) {

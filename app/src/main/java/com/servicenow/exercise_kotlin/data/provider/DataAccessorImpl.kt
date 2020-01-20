@@ -12,5 +12,6 @@ class DataAccessorImpl(val app: Application) : DataAccessor {
         for (game in NESGames.list) {
             resultList.add(game);
         }
+        callback.onNext(resultList)
     }
 }
