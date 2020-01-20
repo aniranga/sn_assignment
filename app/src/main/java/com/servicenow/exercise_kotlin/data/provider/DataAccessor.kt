@@ -1,10 +1,10 @@
 package com.servicenow.exercise_kotlin.data.provider
 
-import com.servicenow.resources.Game
+import com.servicenow.exercise_kotlin.data.model.GameList
 import io.reactivex.Observer
 
 interface DataAccessor {
 
-    fun getGamesList(callback: Observer<ArrayList<Game>>)
+    fun getGamesList(callback: Observer<GameList>)
 
 }

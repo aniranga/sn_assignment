@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.servicenow.exercise">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="com.servicenow.exercise_kotlin.GameListApp"
         android:allowBackup="true"

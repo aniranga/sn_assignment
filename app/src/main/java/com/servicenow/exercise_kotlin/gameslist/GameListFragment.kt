@@ -17,7 +17,9 @@ import com.servicenow.exercise_kotlin.data.provider.DataAccessorProvider
 import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_DESC_KEY
 import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAME_TITLE_KEY
 import com.servicenow.resources.Game
+import kotlinx.android.synthetic.main.fragment_game_list.*
 import kotlinx.android.synthetic.main.fragment_game_list.view.*
+import kotlinx.android.synthetic.main.fragment_game_list.view.progress_circular
 
 class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback {
 
@@ -58,11 +60,11 @@ class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback 
     }
 
     override fun showProgress() {
-
+        progress_circular?.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-
+        progress_circular?.visibility = View.GONE
     }
 
     override fun showError() {
