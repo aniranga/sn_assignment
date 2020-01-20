@@ -1,10 +1,8 @@
 package com.servicenow.exercise_kotlin.gameslist
 
-import android.util.Log
 import com.servicenow.exercise_kotlin.data.model.GameList
 import com.servicenow.exercise_kotlin.data.provider.DataAccessor
 import com.servicenow.exercise_kotlin.data.provider.DataAccessorProvider
-import com.servicenow.resources.Game
 import io.reactivex.Observer
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -12,7 +10,6 @@ import io.reactivex.disposables.Disposable
 class GameListPresenterImpl(val gameListView: GameListView, dataAccessorProvider: DataAccessorProvider): GameListPresenter {
 
     private val dataAccessor: DataAccessor = dataAccessorProvider.getDataAccessor()
-    private var resultList : List<Game> = ArrayList()
     private var disposables: CompositeDisposable = CompositeDisposable()
 
     override fun fetchItems() {
@@ -34,10 +31,8 @@ class GameListPresenterImpl(val gameListView: GameListView, dataAccessorProvider
         }
 
         override fun onNext(listHolder: GameList) {
-            Log.e("GamesListPresenterImpl", "got reults: " + listHolder.games?.size)
             gameListView.hideProgress()
-            resultList = listHolder?.games!!
-            gameListView.onFetchedAllItems(resultList)
+            gameListView.onFetchedAllItems(listHolder?.games!!)
         }
 
         override fun onError(e: Throwable) {

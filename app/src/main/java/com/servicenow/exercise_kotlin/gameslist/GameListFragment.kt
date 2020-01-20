@@ -19,7 +19,6 @@ import com.servicenow.exercise_kotlin.gameslist.GameDetailFragment.Companion.GAM
 import com.servicenow.resources.Game
 import kotlinx.android.synthetic.main.fragment_game_list.*
 import kotlinx.android.synthetic.main.fragment_game_list.view.*
-import kotlinx.android.synthetic.main.fragment_game_list.view.progress_circular
 
 class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback {
 
@@ -68,7 +67,7 @@ class GameListFragment: Fragment(), GameListView, GameListAdapter.ClickCallback 
     }
 
     override fun showError() {
-
+        //TODO: show snackbar here
     }
 
     override fun onGameItemClicked(gameObj: Game) {
